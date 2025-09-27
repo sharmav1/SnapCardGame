@@ -6,6 +6,7 @@ using SnapCardGame.Application.SnapMatch.Factory;
 using SnapCardGame.Application.Shuffle;
 using SnapCardGame.Application.CreateDeck;
 
+// Setup user input management and validation
 IUserInputValidator userInputValidator = new UserInputValidator();
 IManageUserInputs manageUserInputs = new ManageUserInputs(userInputValidator);
 var userSettings = manageUserInputs.GetUserSettings();

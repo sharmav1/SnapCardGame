@@ -1,7 +1,17 @@
 ﻿namespace SnapCardGame.Application.InputValidation
 {
+    /// <summary>
+    /// This class validates user inputs for the Snap Card Game.
+    /// </summary>
     public class UserInputValidator : IUserInputValidator
     {
+        /// <summary>
+        /// Validates the number of packs input by the user.
+        /// </summary>
+        /// <param name="packInput"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public int ValidatePacks(string? packInput)
         {
             int result;
@@ -13,6 +23,12 @@
             return result;
         }
 
+        /// <summary>
+        /// Validates the input for matching by both rank and suit.
+        /// </summary>
+        /// <param name="bothRankAndSuit"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         public char ValidateBothRankAndSuit(string? bothRankAndSuit)
         {
             char result;
@@ -28,6 +44,12 @@
             return result;
         }
 
+        /// <summary>
+        /// Validates the input for matching by rank.
+        /// </summary>
+        /// <param name="rank"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         public char ValidateRank(string? rank)
         {
             char result;
@@ -43,6 +65,12 @@
             return result;
         }
 
+        /// <summary>
+        /// Validates the input for matching by suit.
+        /// </summary>
+        /// <param name="suit"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         public char ValidateSuit(string? suit)
         {
             char result;
