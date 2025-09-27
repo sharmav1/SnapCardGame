@@ -1,18 +1,24 @@
-﻿using SnapCardGame.Models.Deck;
+﻿using SnapCardGame.Application.CreateDeck;
+using SnapCardGame.Models.Deck;
 
-namespace SnapCardGame.Application
+namespace SnapCardGame.Application.Shuffle
 {
     /// <summary>
     /// Handles shuffling of multiple packs of cards into a single deck.
     /// </summary>
-    public class ShuffleCards
+    public class ShuffleCards : IShuffleCard
     {
+        private readonly IDeckGenerator _deckGenerator;
+        public ShuffleCards(IDeckGenerator deckGenerator)
+        {
+            _deckGenerator = deckGenerator;
+        }
         /// <summary>
         /// Shuffles the specified number of card packs into a single deck.
         /// </summary>
         /// <param name="numOfPacks"></param>
         /// <returns></returns>
-        public static List<Card> Execute(int numOfPacks)
+        public List<Card> Execute(int numOfPacks)
         {
             Console.WriteLine();
             Console.WriteLine();
@@ -22,7 +28,7 @@ namespace SnapCardGame.Application
             var deck = new List<Card>();
             for (int i = 0; i < numOfPacks; i++)
             {
-                deck.AddRange(CreateDeck.GenerateStandard());
+                deck.AddRange(_deckGenerator.GenerateStandard());
             }
 
             // Shuffle using Fisher-Yates algorithm

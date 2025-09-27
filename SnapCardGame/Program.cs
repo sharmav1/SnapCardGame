@@ -1,23 +1,19 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using SnapCardGame.Application;
+using SnapCardGame.Application.InputValidation;
+using SnapCardGame.Application.UserInputs;
 using SnapCardGame.Application.SnapMatch.Factory;
-using SnapCardGame.Models.UserSettings;
-using SnapCardGame.UI;
+using SnapCardGame.Application.Shuffle;
+using SnapCardGame.Application.CreateDeck;
 
-// Take user inputs
-var result = UserInputs.Take();
-
-// Map the inputs to UserSettings model
-UserSettings userSettings = new UserSettings
-{
-    NumberOfPacks = result.Item1,
-    MatchByRankAndSuit = result.Item2,
-    MatchByRank = result.Item3,
-    MatchBySuit = result.Item4
-};
+IUserInputValidator userInputValidator = new UserInputValidator();
+IManageUserInputs manageUserInputs = new ManageUserInputs(userInputValidator);
+var userSettings = manageUserInputs.GetUserSettings();
 
 // Shuffle the cards and get the pile
-var pile = ShuffleCards.Execute(userSettings.NumberOfPacks);
+IDeckGenerator deckGenerator = new DeckGenerator();
+IShuffleCard shuffleCard = new ShuffleCards(deckGenerator);
+var pile = shuffleCard.Execute(userSettings.NumberOfPacks);
 
 // Get Matching Strategy
 ISnapMatchFactory snapMatchFactory = new SnapMatchFactory();

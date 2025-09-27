@@ -1,17 +1,17 @@
 ﻿using SnapCardGame.Models.Deck;
 
-namespace SnapCardGame.Application
+namespace SnapCardGame.Application.CreateDeck
 {
     /// <summary>
-    /// Generates a standard 52-card deck.
+    /// This class is responsible for generating decks of cards.
     /// </summary>
-    public static class CreateDeck
+    public class DeckGenerator : IDeckGenerator
     {
         /// <summary>
         /// Generates a standard 52-card deck.
         /// </summary>
         /// <returns></returns>
-        public static List<Card> GenerateStandard()
+        public IEnumerable<Card> GenerateStandard()
         {
             var deck = new List<Card>();
             foreach (var suit in Enum.GetValues(typeof(Suit)).Cast<Suit>())
