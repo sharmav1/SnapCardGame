@@ -55,7 +55,7 @@ namespace SnapCardGame.Application.UserInputs
                 var packInput = Console.ReadLine();
                 try
                 {
-                    numOfPacks = _userInputValidator.ValidatePacks(packInput);
+                    numOfPacks = _userInputValidator.ValidatePacks(packInput?.Trim());
                     break;
                 }
                 catch (Exception ex)
@@ -81,7 +81,7 @@ namespace SnapCardGame.Application.UserInputs
                 Console.WriteLine();
                 try
                 {
-                    bothRankAndSuit = _userInputValidator.ValidateBothRankAndSuit(bothRankAndSuitInput);
+                    bothRankAndSuit = _userInputValidator.ValidateBothRankAndSuit(bothRankAndSuitInput?.Trim());
                     break;
                 }
                 catch (Exception ex)
@@ -108,7 +108,7 @@ namespace SnapCardGame.Application.UserInputs
 
                 try
                 {
-                    rank = _userInputValidator.ValidateRank(rankInput);
+                    rank = _userInputValidator.ValidateRank(rankInput?.Trim());
                     break;
                 }
                 catch (Exception ex)
@@ -133,7 +133,7 @@ namespace SnapCardGame.Application.UserInputs
 
                 try
                 {
-                    suit = _userInputValidator.ValidateSuit(suitInput);
+                    suit = _userInputValidator.ValidateSuit(suitInput?.Trim());
                     break;
                 }
                 catch (Exception ex)

@@ -18,7 +18,7 @@
             if (!int.TryParse(packInput, out result))
                 throw new ArgumentException("Invalid input, please enter a number greater than 0.");
             else if (result <= 0)
-                throw new ArgumentOutOfRangeException("Invalid input, please enter a number greater than 0.");
+                throw new ArgumentOutOfRangeException("NumberOfPacks","Invalid input, please enter a number greater than 0.");
 
             return result;
         }
